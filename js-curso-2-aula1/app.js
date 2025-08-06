@@ -1,14 +1,28 @@
+let listaDeNumerosSorteados = [];
+quantidade = 10;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
 
+
 function gerarNumeroAleatorio () {
-    return parseInt(Math.random() * 10 + 1)
+    let numeroEscolhido = parseInt(Math.random() * quantidade + 1);
+    let quantidadeDeElementosNaLista = listaDeNumerosSorteados.length;
+    if (quantidadeDeElementosNaLista == quantidade){
+        listaDeNumerosSorteados = [];
+    }
+    if (listaDeNumerosSorteados.includes(numeroEscolhido)) {
+        return gerarNumeroAleatorio();
+    } else {
+        listaDeNumerosSorteados.push(numeroEscolhido);
+        return numeroEscolhido;
+    }
 }
 
 
 function exibirTextoNaTela(tag, texto) {
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
+    responsiveVoice.speak(texto, 'Brazilian Portuguese Female', {rate: 1.2}); //possível graças ao responsiveVoice.js disponível no html
 }
 
 function limparCampo() {
@@ -53,3 +67,5 @@ function verificarChute(){
         limparCampo();
     }
 }
+
+//variavel.length - Puxa o número de elementos de uma array ou string
