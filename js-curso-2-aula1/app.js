@@ -15,5 +15,6 @@ exibirTextoNaTela('p','Digite um número de 01 a 10:');
 
 
 function verificarChute(){
-    console.log(numeroSecreto);
+    let chute = document.querySelector('input').value;
+    console.log(chute == numeroSecreto);
 }
